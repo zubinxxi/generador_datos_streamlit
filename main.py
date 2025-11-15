@@ -1,7 +1,7 @@
 import streamlit as st
 from faker import Faker
 import pandas as pd
-
+from streamlit_extras.no_default_selectbox import selectbox
 
 st.set_page_config(
     page_title="FAKER DATA",
@@ -15,7 +15,7 @@ st.divider()
 with st.sidebar:
     st.subheader("Configura tu Faker Data")
 
-    localization = st.selectbox(
+    localization = selectbox(
         "Idioma",
         options=[
             "en_US",
@@ -45,7 +45,7 @@ with st.sidebar:
     fields_selection = []
     st.write("Selecciona los campos: ")
     for i in range(num_fields):
-        field = st.selectbox(f"Campo {i+1}", list(faker_options.keys()), key=f"id_{i}")
+        field = selectbox(f"Campo {i+1}", list(faker_options.keys()), key=f"id_{i}")
         fields_selection.append(field)
 
 if st.button("Generar datos"):
